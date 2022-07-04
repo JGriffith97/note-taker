@@ -1,10 +1,10 @@
 const express = require('express')
 
 // Import modular routers
-
+const dbRouter = require('./db')
 
 const app = express()
 
-//  app.use('', *router)
+app.use('/db', dbRouter)
 
 module.exports = app;
