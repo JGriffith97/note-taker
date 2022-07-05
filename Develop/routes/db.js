@@ -1,33 +1,29 @@
 const db = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const notes = require('../db/notes.json')
 
 db.get('/', (req, res) => {
   console.info(`${req.method} request for notes received.`)
 
-  readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)))
+  readFromFile('../db/notes.json').then((data) => res.json(JSON.parse(data)))
 })
 
 db.post('/', (req, res) => {
   console.info(`${req.method} request received to submit notes`)
+  console.log(req.body)
 
   const {title, text} = req.body;
 
-  if (title && text) {
+  if (req.body) {
     const newNote = {
       title,
       text,
     }
 
-    readAndAppend(newNote, '../db/db.json')
-
-    const resp = {
-      status: 'success',
-      body: newNote,
-    }
-
-    res.json(resp)
+    readAndAppend(newNote, '../db/notes.json')
+    res.json(`Note added`)
   } else {
-    res.json('Error')
+    res.error('Error adding note')
   }
 })
 
