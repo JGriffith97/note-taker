@@ -9,7 +9,7 @@ db.get('/notes', (req, res) => {
 })
 
 db.post('/notes', (req, res) => {
-  console.info(`${req.method} request received to submit notes`)
+  console.info(`${req.method} request received to submit notes.`)
   console.log(req.body)
 
   const {title, text} = req.body;
@@ -31,6 +31,10 @@ db.post('/notes', (req, res) => {
   } else {
     res.error('Error adding note')
   }
+})
+
+db.delete('/notes/:id', (req, res) => {
+  console.info(`${req.method} request received.`)
 })
 
 module.exports = db;
