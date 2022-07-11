@@ -17,7 +17,7 @@ This is a note-taking application made for... well, taking notes. As part of the
 ---
 ## Usage
 
-Upon loading the application, you will reach a landing page, from there, click the 'Get Started' button, which will take you to the /notes page. On the right of the page, you will see 'Note Title' and 'Note Text' placeholders indicating their text fields. When content is logged into BOTH of these fields, a save button will appear on the top right, when clicked, the notes will be saved, and the text entered in 'Note Title' will show on the left side of the page in the form of a button, clicking it will show the note in the same field that it was entered. To create another note, click the plus button on the top right, which will again show the placeholder text, allowing another note to be taken.
+Upon loading the application, you will reach a landing page, from there, click the 'Get Started' button, which will take you to the /notes page. On the right of the page, you will see 'Note Title' and 'Note Text' placeholders indicating their text fields. When content is logged into BOTH of these fields, a save button will appear on the top right, when clicked, the notes will be saved, and the text entered in 'Note Title' will show on the left side of the page in the form of a button, clicking it will show the note in the same field that it was entered. If you wish to remove a note, there is a trashcan button associated with each individual note, click it to remove said note from the page. To create another note, click the plus button on the top right, which will again show the placeholder text, allowing another note to be taken.
 
 ---
 ## Contributing
@@ -46,7 +46,6 @@ See [Creative Commons](http://creativecommons.org/publicdomain/zero/1.0/) for mo
 
 ---
 <br/>
-
 Created by Jayden Griffith -- @GitHub: [JGriffith97](https://github.com/JGriffith97) -- LinkedIn: [Jayden Griffith](https://www.linkedin.com/in/jayden-griffith-a3b7b9217/)
 
 Live Site: https://jg-note-taker-app.herokuapp.com/
