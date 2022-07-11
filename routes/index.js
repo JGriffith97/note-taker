@@ -2,14 +2,23 @@ const express = require('express')
 const db = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const uniqueId = require('../helpers/uniqueId');
-const notes = require("../db/notes.json")
+const fs = require('fs');
 
 
+// Get request for reading the notes.json file and adding it's content as notes to the page.
 db.get('/notes', (req, res) => {
   console.info(`${req.method} request for notes received.`)
-  readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)))
+  fs.readFile("./db/notes.json", 'utf-8', (err, data) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    let notes = data;
+    res.json(JSON.parse(notes))
+  })
 })
 
+// Get request for reading individual notes by id number 
 db.get('/notes/:id', (req, res) => {
   if (req.params.id) {
     console.info(`${req.method} request for individual id received.`)
@@ -27,6 +36,7 @@ db.get('/notes/:id', (req, res) => {
   }
 })
 
+// Post request for adding new notes to the page.
 db.post('/notes', (req, res) => {
   console.info(`${req.method} request received to submit notes.`)
   console.log(req.body)
@@ -53,22 +63,26 @@ db.post('/notes', (req, res) => {
   }
 })
 
+// Delete request for deleting individual notes from the page by their id number.
 db.delete('/notes/:id', (req, res) => {
+  console.info(`${req.method} request received!`)
+  console.log(req.params.id)
+
+  let notes
   if (req.params.id) {
-    console.info(`${req.method} request received!`);
-    const noteId = req.params.id;
-    for (let i = 0; i < notes.length; i++) {
-      const currentNote = notes[i];
-      if (currentNote.id === noteId) {
-        notes.splice(currentNote)
-        res.status(200).send('Note Deleted')
-      } 
-    }
+    fs.readFile("./db/notes.json", 'utf-8', (err, data) => {
+      if (err) {
+        console.log(err)
+        return
+      }
+      tempNotes = JSON.parse(data)
+      notes = tempNotes.filter(note => note.id !== req.params.id)
+      fs.writeFile("./db/notes.json", JSON.stringify(notes), (err) => {
+        res.json(notes)
+      })
+    })
   }
-
-
 })
 
-module.exports = db;
 
-// http://localhost:3001/api/notes/47
+module.exports = db;
