@@ -46,6 +46,7 @@ See [Creative Commons](http://creativecommons.org/publicdomain/zero/1.0/) for mo
 
 ---
 <br/>
+
 Created by Jayden Griffith -- @GitHub: [JGriffith97](https://github.com/JGriffith97) -- LinkedIn: [Jayden Griffith](https://www.linkedin.com/in/jayden-griffith-a3b7b9217/)
 
 Live Site: https://jg-note-taker-app.herokuapp.com/
